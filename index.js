@@ -63,7 +63,9 @@ window.SimpleSalesWidget.socketConnect = (io) => {
       });
 }
 
-window.SimpleSalesWidget.advancedSettings = () => {
+window.SimpleSalesWidget.advancedSettings = async () => {
+  const widgetsSettings = await window.SimpleSalesWidget.call('customers.getWidgetsSettings', {})
+  console.log({widgetsSettings})
   console.log('adv settings')
   const workarea = document.querySelector ( '#work-area-'+window.SimpleSalesWidget.self.get_settings().widget_code )
 
