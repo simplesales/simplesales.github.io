@@ -62,3 +62,11 @@ window.SimpleSalesWidget.socketConnect = (io) => {
         window.SimpleSalesWidget.run('socketIn', data)
       });
 }
+
+window.SimpleSalesWidget.advancedSettings = () {
+  console.log('adv settings')
+  const workarea = document.querySelector ( '#work-area-'+window.SimpleSalesWidget.self.get_settings().widget_code )
+
+  workarea.innerHTML = workarea.innerHTML + "<simsales-settings></simsales-settings><div id='simsales_settings_area'></div>"
+
+}
