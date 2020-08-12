@@ -66,9 +66,18 @@ window.SimpleSalesWidget.socketConnect = (io) => {
 window.SimpleSalesWidget.advancedSettings = async () => {
   const widgetsSettings = await window.SimpleSalesWidget.call('customers.getWidgetsSettings', {})
   console.log({widgetsSettings})
-  console.log('adv settings')
   const workarea = document.querySelector ( '#work-area-'+window.SimpleSalesWidget.self.get_settings().widget_code )
+  workarea.innerHTML = workarea.innerHTML + "<div class='ss_settings_header'><select id='ss_widget_settings_select' /></div>"
 
-  workarea.innerHTML = workarea.innerHTML + "<simsales-settings></simsales-settings><div id='simsales_settings_area'></div>"
+  var elm = document.getElementById("ss_widget_settings_select"); 
 
+  for (var i = 0, len = widgetsSettings.length; i < len; i++) {
+      var name = widgetsSettings[i].name;
+
+      // create an option element
+      var option = document.createElement("option");
+      option.value = i;
+      option.textContent = name;
+      elm.add(option);
+  }
 }
