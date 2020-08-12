@@ -63,7 +63,7 @@ window.SimpleSalesWidget.socketConnect = (io) => {
       });
 }
 
-window.SimpleSalesWidget.advancedSettings = () {
+window.SimpleSalesWidget.advancedSettings = () => {
   console.log('adv settings')
   const workarea = document.querySelector ( '#work-area-'+window.SimpleSalesWidget.self.get_settings().widget_code )
 
