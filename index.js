@@ -48,7 +48,6 @@ window.SimpleSalesWidget.call = async (method, data) => {
 }
 
 window.SimpleSalesWidget.socketConnect = (io) => {
-    console.log('socket connect')
     const socket = io(window.SimpleSalesWidget.baseUrl, {
         query: {
           token: window.SimpleSalesWidget.jwt,
