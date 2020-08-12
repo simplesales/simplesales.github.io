@@ -67,17 +67,12 @@ window.SimpleSalesWidget.advancedSettings = async () => {
   const widgetsSettings = await window.SimpleSalesWidget.call('customers.getWidgetsSettings', {})
   console.log({widgetsSettings})
   const workarea = document.querySelector ( '#work-area-'+window.SimpleSalesWidget.self.get_settings().widget_code )
-  workarea.innerHTML = workarea.innerHTML + "<div class='ss_settings_header'><select id='ss_widget_settings_select' /></div>"
+  
 
-  var elm = document.getElementById("ss_widget_settings_select"); 
+  const selectHtml = window.SimpleSalesWidget.self.render({ ref: '/tmpl/controls/select.twig' }, {
+    name: 'settings',
+    items: widgetsSettings.map((s, index) => ({id: index, option: s.name }))
+  });
 
-  for (var i = 0, len = widgetsSettings.length; i < len; i++) {
-      var name = widgetsSettings[i].name;
-
-      // create an option element
-      var option = document.createElement("option");
-      option.value = i;
-      option.textContent = name;
-      elm.add(option);
-  }
+  workarea.innerHTML = workarea.innerHTML + `<div class='ss_settings_header'>${selectHtml}</div>`
 }
